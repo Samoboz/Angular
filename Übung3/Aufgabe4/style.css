@@ -1,0 +1,14 @@
+#outerBox {
+  background-color: lightblue;
+  width: 400px;
+  height: 600px;
+  position: relative;
+}
+
+#innerBox {
+  width: 30px;
+  height: 30px;
+  background-color: blue;
+  position: absolute;
+  transition: 0.4s;
+}

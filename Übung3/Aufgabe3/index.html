@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="bg-light p-5">
+    <div class="container">
+      <h2 class="mb-4">Persönliche Daten</h2>
+      <form id="personalForm" novalidate class="bg-white p-4 rounded shadow">
+        <div class="mb-3">
+          <label for="vorname" class="form-label">Vorname</label>
+          <input type="text" class="form-control" id="vorname" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Nachname</label>
+          <input type="text" class="form-control" id="name" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="geburtstag" class="form-label">Geburtsdatum</label>
+          <input
+            type="date"
+            class="form-control tooltip-text"
+            id="geburtstag"
+            data-tooltip="Mindestens 18 Jahre alt"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="adresse" class="form-label">Adresse</label>
+          <input
+            type="text"
+            class="form-control tooltip-text"
+            id="adresse"
+            data-tooltip="Straße Hausnummer, PLZ Ort"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Mailadresse</label>
+          <input
+            type="email"
+            class="form-control tooltip-text"
+            id="email"
+            data-tooltip="Format: xxxx@xxxx.xxxx, alle Teile genau 4 Zeichen"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="telefon" class="form-label">Telefonnummer</label>
+          <input type="tel" class="form-control" id="telefon" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Absenden</button>
+      </form>
+
+      <div id="successMessage" class="alert alert-success mt-4 d-none">
+        Formular erfolgreich gesendet!
+      </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
