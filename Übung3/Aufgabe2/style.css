@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.light {
+  background: #ffffff;
+  color: #000000;
+}
+
+body.dark {
+  background: #121212ee;
+  color: #ffffff;
+}
+
+.toggle-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.status {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
