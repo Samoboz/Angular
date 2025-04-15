@@ -22,12 +22,24 @@
       <form id="personalForm" novalidate class="bg-white p-4 rounded shadow">
         <div class="mb-3">
           <label for="vorname" class="form-label">Vorname</label>
-          <input type="text" class="form-control" id="vorname" required />
+          <input
+            type="text"
+            class="form-control"
+            id="vorname"
+            required
+            placeholder="Fortgeschritten"
+          />
         </div>
 
         <div class="mb-3">
           <label for="name" class="form-label">Nachname</label>
-          <input type="text" class="form-control" id="name" required />
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Programmierung"
+            required
+          />
         </div>
 
         <div class="mb-3">
@@ -49,6 +61,7 @@
             id="adresse"
             data-tooltip="Straße Hausnummer, PLZ Ort"
             required
+            placeholder="Musterstr."
           />
         </div>
 
@@ -60,12 +73,19 @@
             id="email"
             data-tooltip="Format: xxxx@xxxx.xxxx, alle Teile genau 4 Zeichen"
             required
+            placeholder="Max@Mustermail.de"
           />
         </div>
 
         <div class="mb-3">
           <label for="telefon" class="form-label">Telefonnummer</label>
-          <input type="tel" class="form-control" id="telefon" required />
+          <input
+            type="tel"
+            class="form-control"
+            id="telefon"
+            required
+            placeholder="+49 123456789"
+          />
         </div>
 
         <button type="submit" class="btn btn-primary">Absenden</button>
