@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aufgabe 5: Analoge Uhr - Korrigiert</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0f0f0;
+      }
+
+      #clock-container {
+        position: relative;
+        width: 300px; /* Etwas größer für bessere Sichtbarkeit */
+        height: 300px;
+        border: 5px solid navy;
+        border-radius: 50%;
+        background-color: white;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .mark {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 2px;
+        height: 8px;
+        background-color: grey;
+        transform-origin: center 150px; /* Mitte des Radius (Hälfte der Container-Breite/Höhe) */
+        transform: translateX(-50%); /* Zentrieren */
+      }
+
+      .hour-mark {
+        width: 4px;
+        height: 15px;
+        background-color: black;
+      }
+
+      .hand {
+        position: absolute;
+        left: 50%;
+        bottom: 50%; /* Startet von der Mitte unten */
+        transform-origin: center bottom; /* Drehpunkt am unteren Ende */
+        transform: translateX(-50%) rotate(0deg); /* Initialausrichtung nach oben, zentriert */
+        border-radius: 2px; /* Abgerundete Enden */
+        z-index: 10; /* Hände über Markierungen */
+      }
+
+      #hour-hand {
+        width: 8px;
+        height: 80px; /* Kürzester Zeiger */
+        background-color: black;
+        z-index: 8;
+      }
+
+      #minute-hand {
+        width: 6px;
+        height: 110px;
+        background-color: black;
+        z-index: 9;
+      }
+
+      #second-hand {
+        width: 3px;
+        height: 130px; /* Längster Zeiger */
+        background-color: red;
+        z-index: 10;
+
+        transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1); /* Lässt den Zeiger "ticken" */
+      }
+
+      #center-dot {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 11;
+      }
+
+      /* Datumsanzeige (Teil c) */
+      #date-display {
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #eee;
+        border: 1px solid #ccc;
+        padding: 3px 8px;
+        font-family: sans-serif;
+        font-size: 14px;
+        border-radius: 3px;
+        z-index: 7;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock-container">
+      <div id="hour-hand" class="hand"></div>
+      <div id="minute-hand" class="hand"></div>
+      <div id="second-hand" class="hand"></div>
+      <div id="center-dot"></div>
+      <div id="date-display"></div>
+    </div>
+
+    <script>
+      const clockContainer = document.getElementById("clock-container");
+      const hourHand = document.getElementById("hour-hand");
+      const minuteHand = document.getElementById("minute-hand");
+      const secondHand = document.getElementById("second-hand");
+      const dateDisplay = document.getElementById("date-display"); // Für Teil c
+
+      const clockRadius = clockContainer.offsetWidth / 2; // = 150px
+
+      // --- Teil a) Ziffernblatt-Markierungen erstellen ---
+      function createMarks() {
+        for (let i = 0; i < 60; i++) {
+          const mark = document.createElement("div");
+          mark.classList.add("mark");
+          const angle = i * 6; // 360 Grad / 60 Striche = 6 Grad pro Strich
+
+          // Stundenstriche hervorheben
+          if (i % 5 === 0) {
+            mark.classList.add("hour-mark");
+            mark.style.transformOrigin = `center ${clockRadius}px`; // Sicherstellen, dass auch hier der Radius stimmt
+            mark.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+          } else {
+            // Minutenstriche
+            mark.style.transformOrigin = `center ${clockRadius}px`;
+            mark.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+          }
+          clockContainer.appendChild(mark);
+        }
+      }
+
+      // --- Teil b) Uhrzeit aktualisieren ---
+      function updateClock() {
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const minutes = now.getMinutes();
+        const hours = now.getHours();
+
+        // Gradberechnung:
+        // Sekunde: 360 Grad / 60 Sek = 6 Grad pro Sekunde
+        // Minute: 360 Grad / 60 Min = 6 Grad pro Minute + Bruchteil für Sekunden (6/60 = 0.1 Grad pro Sekunde)
+        // Stunde: 360 Grad / 12 Std = 30 Grad pro Stunde + Bruchteil für Minuten (30/60 = 0.5 Grad pro Minute)
+
+        const secondDeg = (seconds / 60) * 360;
+        // für Teil c) Ticking: Runden auf den nächsten vollen Sekundenschritt kann helfen, den "Sprung" deutlicher zu machen, ist aber nicht zwingend.
+        // const secondDeg = Math.floor(seconds) * 6; // Alternative für klareres Ticken ohne Transition
+
+        const minuteDeg = (minutes / 60) * 360 + (seconds / 60) * 6;
+        const hourDeg = (hours / 12) * 360 + (minutes / 60) * 30;
+
+        // Rotation anwenden (translateX bleibt konstant)
+        secondHand.style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
+        minuteHand.style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
+        hourHand.style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
+
+        // --- Teil c) Datumsanzeige aktualisieren ---
+        const day = String(now.getDate()).padStart(2, "0");
+        const month = String(now.getMonth() + 1).padStart(2, "0"); // Monate sind 0-basiert
+        const year = now.getFullYear();
+        dateDisplay.textContent = `${day}.${month}.${year}`;
+      }
+
+      // Initialisierung
+      createMarks();
+      updateClock(); // Erste Aktualisierung sofort beim Laden
+
+      // Uhr jede Sekunde aktualisieren
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>

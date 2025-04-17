@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- Insb. für Mobilgeräte: Anpassen an Gerätegröße, Zoom zulassen -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<title>Web By Step - Beispielblog</title>
+
+<!-- Bootstrap Stylesheet vor allen anderen Styles einbinden -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+<!-- Wir verwenden ein einfaches Bootstrap Layout mit Containern für Kopf, Inhalt und Fuß sowie ein Grid für den Inhalt und die Seitenleiste
+https://getbootstrap.com/docs/5.3/layout/grid/
+ -->
+
+<link rel="stylesheet" href="blog.css">
+
+</head>
+<body>
+<!-- Struktur des HTML-Dokuments:
+- Kopfteil mit Navigation
+- Hauptteil mit Seitenleiste
+- Fußteil mit Copyright, Impressum, etc.
+ -->
+ 	<!-- Kopfteil -->
+	<header class="container mb-5">
+		<a href="index.html" title="zur Startseite">
+		<img title="Logo" src="images/logo.svg" alt="Logo">
+		<h1>Web By Step - Beispielblog</h1></a>
+		<nav>Navigation</nav>
+	</header>
+	
+	<!-- Hauptteil -->
+	<div class="container">
+		<div class="row">
+			<!-- Breite 3/4 (9/12) -->
+			<main class="col-12 col-md-9">
+			
+		<!-- Blogartikel werden mit dem Element <article> gekennzeichnet. Alle Artikel sind identisch strukturiert. Diese Struktur wird später automatisch erzeugt, wenn die Artikeldaten aus der Datenhaltung geladen werden. -->
+				<article>
+					<h2>HTML Dokumente</h2>
+					<p>17. Januar 2018 20:48 Uhr von Thomas Richter</p>
+					<p><b>Eine kurze Einführung in HTML-Dokumente</b></p>
+					<p>HTML Dokumente dienen der Strukturierung von Inhalten, die im Web bzw. mit Webtechnologien wie Internetbrowser und Hypertext Transfer Protocol (HTTP) verbreitet werden sollen. HTML Dokumente bestehen aus HTML-Elementen. Das einfachste HTML5 Dokument ist: <br>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Titel des Dokuments&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+					</p>
+					<div>Tags: <a class="badge rounded-pill text-bg-primary" href="tagliste.html">HTML5</a> <span class="badge rounded-pill text-bg-primary">Dokument</span> <span class="badge rounded-pill text-bg-primary">HTTP</span></div><br>
+					<!-- Social Media Links -->
+					<div>
+						<a title="Facebook" href="https://www.facebook.com/share.php?u=https%3A%2F%2Fmyblog.local%2Fartikelurl" target="_blank">Teilen auf Facebook</a> |
+						<a title="Twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmyblog.local%2Fartikelurl&amp;text=HTML%20Dokumente&amp;via=myblog&amp;lang=de" target="_blank">Twittern</a> |
+						<a href="teilenEmail.html">Teilen via E-Mail</a>
+					</div>
+				</article>
+		
+		
+				<article class="mt-5">
+					<h2><a href="artikel.html">HTML Elemente</a></h2>
+					<p>16. Januar 2018 21:14 Uhr von Thomas Richter</p>
+					<p><b>Eine kurze Einführung in HTML Elemente</b></p>
+					<img class="textimg" src="images/baum.png" />
+					<p>Die HTML Elemente eines HTML Dokuments sind ineinander geschachtelt und bilden damit eine hierarchische Struktur, einen Baum. Ein Element besteht üblicherweise aus einem öffnenden und einem schließenden Tag. Zwischen den beiden Tags befindet sich der eigentliche Inhalt des Elements.<br> Weiterhin können im öffnenden Tag Attribute in Form von Schlüssel-Wert Paaren notiert werden.<br><br>
+		
+		Beispiel: <code>&lt;a href="https://w3.org"&gt;Das ist ein Link auf ein anderes HTML-Dokument (W3C)&lt;/a&gt;</code> wird dargestellt als:<br><br>
+		
+		<a href="https://w3.org">Das ist ein Link auf ein anderes HTML-Dokument (W3C)</a>
+					</p>
+					<div>Tags: <a class="badge rounded-pill text-bg-primary" href="tagliste.html">HTML5</a> <span class="badge rounded-pill text-bg-primary">Element</span></div><br>
+					<div>
+						<a title="Facebook" href="https://www.facebook.com/share.php?u=https%3A%2F%2Fmyblog.local%2Fartikelurl" target="_blank">Teilen auf Facebook</a> |
+						<a title="Twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmyblog.local%2Fartikelurl&amp;text=HTML%20Dokumente&amp;via=myblog&amp;lang=de" target="_blank">Twittern</a> |
+						<a href="teilenEmail.html">Teilen via E-Mail</a>
+					</div>
+				</article>
+
+
+				<article class="mt-5">
+					<h2>Semantische Strukturierung von HTML-Seiten</h2>
+					<p>16. Januar 2018 19:03 Uhr von Thomas Richter</p>
+					<p><b>Ein kurzer Überblick über semantische Elemente in HTML5.</b></p>
+					<p>In der Vergangenheit wurden HTML-Dokumente häufig mit Tabellen oder Frames (ok, sehr weit zurückliegende Vergangenheit...) strukturiert. Später wurden dafür <code>&lt;div&gt;</code>-Elemente verwendet. In HTML5 gibt es Elemente, die es erlauben, den einzelnen Teilen des Dokuments eine Semantik zu verleihen, die von modernen Browsern ausgewertet wird und ggf. die Darstellung - z. B. auf Mobilgeräten und in Readern - beeinflusst. Beispielsweise lässt sich ein Dokument mit den Elementen <code>&lt;header&gt;, &lt;main&gt;, &lt;footer&gt;</code> grob in Kopf-, Inhalts- und Fußbereich unterteilen. Weitere semantische Elemente sind <code>&lt;nav&gt;, &lt;aside&gt;, &lt;article&gt;, &lt;section&gt;</code>
+					</p>
+					<div>Tags: <span class="badge rounded-pill text-bg-primary">Semantik</span> <a class="badge rounded-pill text-bg-primary" href="tagliste.html">HTML5</a> <span class="badge rounded-pill text-bg-primary">Element</span></div><br>
+					<div>
+						<a title="Facebook" href="https://www.facebook.com/share.php?u=https%3A%2F%2Fmyblog.local%2Fartikelurl" target="_blank">Teilen auf Facebook</a> |
+						<a title="Twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmyblog.local%2Fartikelurl&amp;text=HTML%20Dokumente&amp;via=myblog&amp;lang=de" target="_blank">Twittern</a> |
+						<a href="teilenEmail.html">Teilen via E-Mail</a>
+					</div>
+				</article>
+
+				<hr>
+				<a class="btn btn-primary" href="artikelNeu.html">Neuen Artikel erstellen</a>
+
+			</main>
+
+			<!-- Breite 1/4 (3/12) -->
+			<aside class="col-12 col-md-3 mt-5">
+				<div class="row">
+					<label for="login" class="col-6">Login</label> <input class="col-6" id="login" name="login" type="text" size="12" /><br>
+					<label for="password" class="col-6">Passwort</label> <input class="col-6" id="password" name="password" type="password" size="12" /><br>
+					<div class="col-12"><a href="#" class="btn btn-outline-primary btn-sm" role="button">Login</a></div>
+
+					<hr class="col-12 mt-3">
+					
+					<div class="col-12 input-group input-group-sm pr-0">
+						<input type="text" class="form-control" aria-label="Suchen">
+						<a class="btn btn-outline-primary" href="suchergebnis.html">Suchen</a>
+					</div>					
+			
+					<hr class="col-12 mt-3">
+
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item"><a href="monatsliste.html">November 2017 (3)</a></li>
+						<li class="list-group-item"><a href="monatsliste.html">Dezember 2017 (1)</a></li>
+						<li class="list-group-item"><a href="monatsliste.html">März 2018 (2)</a></li>
+						<li class="list-group-item"><a href="monatsliste.html">April 2018 (1)</a></li>
+					</ul>
+					
+					<hr class="col-12 mt-3">
+
+					<div class="col-12">
+						<span class="tag-1">Semantik</span>
+						<a class="tag-5" href="tagliste.html">HTML5</a>
+						<span class="tag-1">Element</span>
+						<span class="tag-3">Dokument</span>
+						<span class="tag-2">HTTP</span>
+					</div>
+				</div>
+			</aside>
+		</div> <!-- row -->
+	</div> <!-- container -->
+	<footer class="container mb-3">
+	<hr>
+	<a href="impressum.html">Impressum</a> | Copyright | <a href="kontakt.html">Kontakt</a>
+	</footer>
+    <script type="module" src="data.js"></script>
+    <script type="module">
+
+
+        import { articles } from './data.js';
+      
+        
+        const main = document.querySelector("main");
+      
+        articles.forEach(function(article) {
+          const tagsHtml = article.tags.map(function(tag) { `
+            <span class="badge rounded-pill text-bg-primary">${tag}</span>`}).join(" ");
+      
+          const html = `
+            <article class="mt-5">
+              <h2>${article.title}</h2>
+              <p>${article.date} von ${article.author}</p>
+              <p><b>${article.intro}</b></p>
+              <p>${article.content}</p>
+              <div>Tags: ${tagsHtml}</div><br>
+              <div>
+                <a title="Facebook" href="https://www.instagram.com/samoboz" target="_blank">Teilen auf Facebook</a> |
+                <a title="Twitter" href="https://www.instagram.com/samoboz" target="_blank">Twittern</a> |
+                <a href="teilenEmail.html">Teilen via E-Mail</a>
+              </div>
+            </article>
+          `;
+      
+          main.innerHTML += html;
+        });
+      </script>
+      
+</body>
+</html>
