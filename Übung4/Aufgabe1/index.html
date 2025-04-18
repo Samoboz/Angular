@@ -35,7 +35,7 @@ https://getbootstrap.com/docs/5.3/layout/grid/
 	<div class="container">
 		<div class="row">
 			<!-- Breite 3/4 (9/12) -->
-			<main class="col-12 col-md-9">
+			<main id="artikelID" class="col-12 col-md-9">
 			
 		<!-- Blogartikel werden mit dem Element <article> gekennzeichnet. Alle Artikel sind identisch strukturiert. Diese Struktur wird später automatisch erzeugt, wenn die Artikeldaten aus der Datenhaltung geladen werden. -->
 				<article>
@@ -144,35 +144,25 @@ https://getbootstrap.com/docs/5.3/layout/grid/
 	<a href="impressum.html">Impressum</a> | Copyright | <a href="kontakt.html">Kontakt</a>
 	</footer>
     <script type="module" src="data.js"></script>
+	
     <script type="module">
 
+const main = document.querySelector("#artikelID");
 
-        import { articles } from './data.js';
-      
-        
-        const main = document.querySelector("main");
-      
-        articles.forEach(function(article) {
-          const tagsHtml = article.tags.map(function(tag) { `
-            <span class="badge rounded-pill text-bg-primary">${tag}</span>`}).join(" ");
-      
-          const html = `
-            <article class="mt-5">
-              <h2>${article.title}</h2>
-              <p>${article.date} von ${article.author}</p>
-              <p><b>${article.intro}</b></p>
-              <p>${article.content}</p>
-              <div>Tags: ${tagsHtml}</div><br>
-              <div>
-                <a title="Facebook" href="https://www.instagram.com/samoboz" target="_blank">Teilen auf Facebook</a> |
-                <a title="Twitter" href="https://www.instagram.com/samoboz" target="_blank">Twittern</a> |
-                <a href="teilenEmail.html">Teilen via E-Mail</a>
-              </div>
-            </article>
-          `;
-      
-          main.innerHTML += html;
-        });
+articles.forEach(artikel => {
+	var kontainer = document.createElement("div")
+	main.appendChild(kontainer);
+	kontainer.innerHTML = `
+	<h2>${artikel.title}</h2>
+	<p><b>${artikel.date}</b> von ${artikel.author}</p>
+	<p>${artikel.intro}</p>
+  <p>${artikel.content}</p>
+<p>
+  ${artikel.tags.map(tag => `<span class="badge rounded-pill text-bg-primary me-1">${tag}</span>`).join('')}
+</p>
+
+	`
+});
       </script>
       
 </body>
