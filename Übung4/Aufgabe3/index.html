@@ -150,7 +150,7 @@ https://getbootstrap.com/docs/5.3/layout/grid/
 const main = document.querySelector("#artikelID");
 
 articles.forEach(artikel => {
-	var kontainer = document.createElement("div")
+	const kontainer = document.createElement("div")
 	main.appendChild(kontainer);
 	kontainer.innerHTML = `
 	<h2>${artikel.title}</h2>
@@ -164,16 +164,24 @@ articles.forEach(artikel => {
 	`
 });
 
+/*
+const headerElement = document.querySelector("header")
+const newThing = document.createElement("div")
+newThing.textContent = "shu habibi"
+headerElement.appendChild(newThing)
+*/
 
 const neuerTag = document.querySelector("header")
 
-var tagTag = document.createElement("div")
+const tagTag = document.createElement("div")
 
 tagTag.className = "neuerBlock"; 
-tagTag.innerHTML = "FP mein ♥️";
+tagTag.innerHTML = "FP Meine Liebe ♥️";
 neuerTag.appendChild(tagTag)
 
       </script>
       
 </body>
 </html>
+
+
