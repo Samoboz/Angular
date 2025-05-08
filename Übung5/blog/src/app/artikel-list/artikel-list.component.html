@@ -1,0 +1,8 @@
+<div *ngFor="let art of articles" class="mb-4">
+  <h2>{{ art.title }}</h2>
+  <p class="text-muted">
+    Von {{ art.author }} am {{ art.date | date : "longDate" }}
+  </p>
+  <p>{{ art.intro }}</p>
+  <hr />
+</div>

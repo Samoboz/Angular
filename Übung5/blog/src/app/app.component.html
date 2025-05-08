@@ -1,0 +1,21 @@
+<!-- Kopfbereich -->
+<app-kopfbereich></app-kopfbereich>
+
+<!-- Inhaltsbereich -->
+<div class="container my-4">
+  <div class="row">
+    <main class="col-md-9">
+      <ng-container *ngFor="let a of articleList">
+        <app-artikel [article]="a"></app-artikel>
+      </ng-container>
+    </main>
+
+    <aside class="col-md-3">
+      <!-- ggf. Sidebar-Komponente -->
+      <app-sidebar [articles]="articleList"></app-sidebar>
+    </aside>
+  </div>
+</div>
+
+<!-- Fußbereich -->
+<app-fussbereich></app-fussbereich>

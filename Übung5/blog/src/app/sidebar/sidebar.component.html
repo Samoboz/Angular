@@ -1,0 +1,8 @@
+<div class="sidebar">
+  <h3>Tagcloud</h3>
+  <ul>
+    <li *ngFor="let tag of tagsMap | keyvalue">
+      {{ tag.key }} ({{ tag.value }})
+    </li>
+  </ul>
+</div>
