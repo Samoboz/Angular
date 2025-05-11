@@ -1,0 +1,11 @@
+<h2>{{ article.title }}</h2>
+<p>
+  <strong>{{ article.date | date }}</strong> – {{ article.author }}
+</p>
+<p>
+  <em>{{ article.intro }}</em>
+</p>
+<p>{{ article.content }}</p>
+<p>
+  <strong>{{ article.tags.join(", ") }}</strong>
+</p>
